@@ -643,17 +643,99 @@ ol {
 
 .section {
   position: relative;
-  padding: clamp(4.5rem, 11vw, 7.5rem) var(--space);
-  max-width: calc(var(--max) + var(--space) * 2);
-  margin: 0 auto;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(4.5rem, 11vw, 7.5rem) max(var(--space), calc((100% - var(--max)) / 2));
+  max-width: none;
+  margin: 0;
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--section-wash, transparent);
 }
 
 .section-band {
-  max-width: none;
-  padding-left: max(var(--space), calc((100% - var(--max)) / 2));
-  padding-right: max(var(--space), calc((100% - var(--max)) / 2));
-  background: linear-gradient(180deg, transparent, rgba(167, 139, 250, 0.04), transparent);
   border-block: 1px solid var(--line);
+}
+
+#experience {
+  --section-wash:
+    radial-gradient(ellipse 75% 70% at 0% 20%, rgba(124, 92, 252, 0.14), transparent 58%),
+    radial-gradient(ellipse 55% 50% at 100% 80%, rgba(88, 60, 180, 0.1), transparent 55%),
+    linear-gradient(180deg, transparent 0%, rgba(167, 139, 250, 0.035) 50%, transparent 100%);
+}
+
+#skills {
+  --section-wash:
+    radial-gradient(ellipse 70% 65% at 100% 0%, rgba(99, 102, 241, 0.13), transparent 55%),
+    radial-gradient(ellipse 50% 55% at 0% 100%, rgba(167, 139, 250, 0.09), transparent 50%),
+    linear-gradient(165deg, rgba(124, 92, 252, 0.045), transparent 45%, rgba(76, 29, 149, 0.05));
+}
+
+#work {
+  --section-wash:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(167, 139, 250, 0.14), transparent 55%),
+    radial-gradient(ellipse 45% 50% at 15% 90%, rgba(124, 92, 252, 0.08), transparent 50%),
+    linear-gradient(195deg, transparent, rgba(88, 60, 180, 0.06), transparent);
+}
+
+#about {
+  --section-wash:
+    radial-gradient(ellipse 65% 70% at 90% 30%, rgba(139, 92, 246, 0.12), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 10% 70%, rgba(109, 77, 255, 0.08), transparent 50%),
+    linear-gradient(180deg, rgba(167, 139, 250, 0.04), transparent 40%, rgba(124, 92, 252, 0.05));
+}
+
+#contact {
+  --section-wash:
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(124, 92, 252, 0.16), transparent 60%),
+    radial-gradient(ellipse 40% 45% at 0% 40%, rgba(167, 139, 250, 0.08), transparent 50%),
+    linear-gradient(160deg, rgba(88, 60, 180, 0.05), transparent 50%);
+}
+
+[data-theme='light'] #experience {
+  --section-wash:
+    radial-gradient(ellipse 75% 70% at 0% 20%, rgba(109, 77, 255, 0.1), transparent 58%),
+    radial-gradient(ellipse 55% 50% at 100% 80%, rgba(124, 92, 252, 0.07), transparent 55%),
+    linear-gradient(180deg, transparent 0%, rgba(109, 77, 255, 0.04) 50%, transparent 100%);
+}
+
+[data-theme='light'] #skills {
+  --section-wash:
+    radial-gradient(ellipse 70% 65% at 100% 0%, rgba(99, 102, 241, 0.1), transparent 55%),
+    radial-gradient(ellipse 50% 55% at 0% 100%, rgba(109, 77, 255, 0.07), transparent 50%),
+    linear-gradient(165deg, rgba(109, 77, 255, 0.045), transparent 45%, rgba(124, 92, 252, 0.04));
+}
+
+[data-theme='light'] #work {
+  --section-wash:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(109, 77, 255, 0.11), transparent 55%),
+    radial-gradient(ellipse 45% 50% at 15% 90%, rgba(124, 92, 252, 0.06), transparent 50%),
+    linear-gradient(195deg, transparent, rgba(109, 77, 255, 0.045), transparent);
+}
+
+[data-theme='light'] #about {
+  --section-wash:
+    radial-gradient(ellipse 65% 70% at 90% 30%, rgba(109, 77, 255, 0.09), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 10% 70%, rgba(139, 92, 246, 0.07), transparent 50%),
+    linear-gradient(180deg, rgba(109, 77, 255, 0.04), transparent 40%, rgba(124, 92, 252, 0.04));
+}
+
+[data-theme='light'] #contact {
+  --section-wash:
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(109, 77, 255, 0.12), transparent 60%),
+    radial-gradient(ellipse 40% 45% at 0% 40%, rgba(139, 92, 246, 0.07), transparent 50%),
+    linear-gradient(160deg, rgba(109, 77, 255, 0.04), transparent 50%);
 }
 
 .section-head {
@@ -962,11 +1044,16 @@ ol {
   gap: 0.35rem 0.75rem;
 }
 
+.project-links li {
+  min-width: 0;
+}
+
 .project-links a {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+  min-width: 0;
   padding: 0.55rem 0.35rem;
   font-size: 0.92rem;
   font-weight: 500;
@@ -974,12 +1061,38 @@ ol {
   border-bottom: 1px solid transparent;
 }
 
+.project-link-text {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.project-link-text > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-icon {
+  flex-shrink: 0;
+  opacity: 0.55;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
 .project-links a:hover {
   color: var(--accent);
   border-bottom-color: var(--line);
 }
 
+.project-links a:hover .site-icon {
+  opacity: 1;
+  color: var(--accent);
+}
+
 .link-arrow {
+  flex-shrink: 0;
   opacity: 0;
   transform: translateX(-4px);
   color: var(--accent);
