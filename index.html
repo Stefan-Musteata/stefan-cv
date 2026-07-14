@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Musteață Ștefan — Front-End Developer. Portfolio and CV: HTML, CSS, JavaScript, React, WordPress, Laravel."
+    />
+    <title>Musteață Ștefan · Front-End Developer</title>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('webcv-theme')
+          if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark'
+          }
+          document.documentElement.setAttribute('data-theme', theme)
+
+          var lang = localStorage.getItem('webcv-lang')
+          if (lang !== 'en' && lang !== 'ro') {
+            lang = (navigator.language || 'en').toLowerCase().indexOf('ro') === 0
+              ? 'ro'
+              : 'en'
+          }
+          document.documentElement.lang = lang
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

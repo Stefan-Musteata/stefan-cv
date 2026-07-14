@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="none" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="edge" x1="60" y1="430" x2="540" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6d4cff"/>
+      <stop offset="50%" stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#9b7dff"/>
+    </linearGradient>
+    <linearGradient id="topFace" x1="200" y1="250" x2="480" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#181428"/>
+      <stop offset="100%" stop-color="#0d0b14"/>
+    </linearGradient>
+    <linearGradient id="sideL" x1="170" y1="320" x2="250" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7c5cfc"/>
+      <stop offset="100%" stop-color="#4c34a8"/>
+    </linearGradient>
+    <linearGradient id="sideR" x1="260" y1="380" x2="540" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#5b3fd4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- bottom slab -->
+  <path d="M170 322 L470 252 L546 320 L246 390 Z" fill="url(#topFace)"/>
+  <path d="M170 322 L246 390 L246 456 L170 388 Z" fill="url(#sideL)"/>
+  <path d="M246 390 L546 320 L546 386 L246 456 Z" fill="url(#sideR)"/>
+  <path d="M170 322 L470 252 L546 320 L246 390 Z" fill="none" stroke="url(#edge)" stroke-width="2"/>
+  <path d="M170 322 L246 390 L246 456 L170 388 Z" fill="none" stroke="#b9a6ff" stroke-width="1.2" opacity="0.55"/>
+  <path d="M246 390 L546 320 L546 386 L246 456 Z" fill="none" stroke="#dcd2ff" stroke-width="1.2" opacity="0.4"/>
+
+  <!-- connectors -->
+  <g stroke="#c4b5fd" stroke-width="1.4" stroke-dasharray="2.5 6" opacity="0.5" stroke-linecap="round">
+    <line x1="214" y1="248" x2="192" y2="330"/>
+    <line x1="430" y1="198" x2="450" y2="268"/>
+    <line x1="498" y1="248" x2="520" y2="322"/>
+    <line x1="272" y1="300" x2="260" y2="375"/>
+  </g>
+
+  <!-- top glass plate -->
+  <path d="M192 228 L468 168 L528 228 L252 288 Z" fill="rgba(255,255,255,0.04)" stroke="#e4dff0" stroke-width="2"/>
+  <path d="M192 228 L252 288 L252 300 L192 240 Z" fill="none" stroke="#c9c3d8" stroke-width="1.4" opacity="0.5"/>
+  <path d="M252 288 L528 228 L528 240 L252 300 Z" fill="none" stroke="#c9c3d8" stroke-width="1.4" opacity="0.35"/>
+</svg>
