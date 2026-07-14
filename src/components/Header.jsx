@@ -34,7 +34,7 @@ export function Header({
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <a className="logo" href="#top" onClick={onNavigate}>
-        Ștefan<span>.</span>
+        Ștefan M<span>.</span>
       </a>
 
       <nav className={`nav${navOpen ? ' is-open' : ''}`} aria-label="Primary">
