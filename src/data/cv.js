@@ -70,6 +70,7 @@ export const shared = {
       id: 'laravel',
       stack: 'HTML · CSS · SCSS · Gulp · PHP · JS · Bootstrap · Vite',
       sites: [
+        'https://spatii.upsc.md/',
         'https://samsungstore.md/',
         'https://istore.md/',
         'https://darwin.md/',
